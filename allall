@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <div>
+                name
+                <input type="text" name=""  v-model="newPelple.name">
+                age
+                <input type="text" name=""  v-model="newPelple.age">
+                sex
+                <select v-model="newPelple.sex">
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                </select>
+                <button @click="add">add</button>
+            </div>
+            <table>
+                <tr>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>sec</th>
+                    <th>delete</th>
+                </tr>
+                <tr v-for="(item,index) in people">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.age }}</td>
+                    <td>{{ item.sex }}</td>
+                    <td>
+                        <button @click="del(index)">delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                newPelple: {
+                    name: '',
+                    age: 0,
+                    sex: ''
+                },
+                people: [
+                    {
+                        name: 'mei1',
+                        age: 22,
+                        sex: 'female'
+                    },
+                    {
+                        name: 'mei2',
+                        age: 22,
+                        sex: 'female'
+                    },
+                    {
+                        name: 'mei3',
+                        age: 22,
+                        sex: 'female'
+                    }
+                ]
+                
+            },
+            methods:{
+                add: function () {
+                    this.people.push(this.newPelple);
+                    this.newPelple = {
+                        name: '',
+                        age: 0,
+                        sex: ''
+                    }
+                },
+                del: function (index) {
+                    this.people.splice(index,1);
+                }
+            }
+        })
+    </script>
+
+</html>
