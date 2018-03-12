@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" name="" v-model="message">
+            <button v-on:click="greet">greet</button>
+            <button @click="say('hi')">say</button>
+        </div>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            },
+            methods: {
+                greet: function () {
+                    alert(this.message);
+                },
+                say: function (msg) {
+                    alert('hi');
+                }
+            }
+        })
+    </script>
+</html>
