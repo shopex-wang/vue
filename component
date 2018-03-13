@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 使用 -->
+            <my-template></my-template>
+        </div>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+
+        //创建组件构造器
+        var myTemplate = Vue.extend({
+            template: '<p>add one two</p>'
+        });
+
+        //注册组件
+        Vue.component('my-template', myTemplate);
+
+        //使用－挂载元素
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+
+</html>
