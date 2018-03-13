@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 使用 -->
+            <my-temp v-bind:my-name="name" v-bind:my-age="age"></my-temp>
+        </div>
+        <template id="temp">
+            <table>
+                <tr>
+                    <th colspan="2">子组件数据</th>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>{{ myName }}</td>
+                </tr>
+                <tr>
+                    <td>age</td>
+                    <td>{{ myAge }}</td>
+                </tr>
+            </table>
+        </template>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'keepfool',
+                age: 28
+            },
+            components: {
+                'my-temp': {
+                    template: '#temp',
+                    props: ['myName', 'myAge']
+                }
+            }
+        });
+
+        //注意：在子组件中定义prop时，使用了camelCase命名法。由于HTML特性不区分大小写，camelCase的prop用于特性时，需要转为 kebab-case（短横线隔开）。例如，在prop中定义的myName，在用作特性时需要转换为my-name。
+
+        //在父组件中使用子组件时，通过以下语法将数据传递给子组件：<child-component v-bind:子组件prop="父组件数据属性"></child-component>
+    </script>
+
+</html>
