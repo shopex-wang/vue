@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 使用 -->
+            <my-temp></my-temp>
+        </div>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component('my-temp', {
+            data: function() {
+                return {a: 1}
+            }
+        });
+    </script>
+
+</html>
