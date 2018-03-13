@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 使用 -->
+            <my-temp></my-temp>
+        </div>
+
+        <!-- <script type="text/x-template" id="my-script">
+            <p>this is a script23</p>
+        </script> -->
+
+        <template id="my-script">
+            <p>template标签不需要添加type属性</p>
+        </template>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        //语法糖
+        Vue.component('my-temp', {
+            template: '#my-script'
+        });
+
+        var vm = new Vue({
+            el: '#app'
+        });
+
+        //template选项现在不再是HTML元素，而是一个id，Vue.js根据这个id查找对应的元素，然后将这个元素内的HTML作为模板进行编译。
+        //使用<script>标签时，type指定为text/x-template，意在告诉浏览器这不是一段js脚本，浏览器在解析HTML文档时会忽略<script>标签内定义的内容。
+    </script>
+
+</html>
