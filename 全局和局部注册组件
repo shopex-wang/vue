@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 使用 -->
+            <my-temp></my-temp>
+            <my-template></my-template>
+        </div>
+        <div id="app2">
+            <my-temp></my-temp>
+            <my-template></my-template>
+        </div>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+
+        //创建组件构造器
+        var myTemp = Vue.extend({
+            template: '<p>keepfool add one two</p>'
+        });
+
+        //全局注册－注册组件
+        Vue.component('my-temp', myTemp);
+
+        //使用－挂载元素
+        var vm = new Vue({
+            el: '#app'
+        });
+
+        var vm = new Vue({
+            el: '#app2'
+        });
+
+
+
+        //创建组件构造器
+        var myTemplate = Vue.extend({
+            template: '<p>add one twssso</p>'
+        });
+
+        //使用－挂载元素
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                //局部注册，将组件注册到＃app下面
+                'my-template': myTemplate
+            }
+        });        
+    </script>
+
+</html>
