@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 父组件数据 -->
+            <table>
+                <tr>
+                    <th colspan="3">父组件数据</th>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>{{ name }}</td>
+                    <td><input type="text" name="" v-model="name"></td>
+                </tr>
+                <tr>
+                    <td>age</td>
+                    <td>{{ age }}</td>
+                    <td><input type="text" name="" v-model="age"></td>
+                </tr>
+            </table>
+
+            <child-temp v-bind:my-name="name" v-bind:my-age="age"></child-temp>
+        </div>
+
+        <!-- 子组件数据 -->
+        <template id="child-temp">
+            <table>
+                <tr>
+                    <th colspan="3">子组件数据</th>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>{{ myName }}</td>
+                    <td><input type="text" name="" v-model="myName"></td>
+                </tr>
+                <tr>
+                    <td>age</td>
+                    <td>{{ myAge }}</td>
+                    <td><input type="text" name="" v-model="myAge"></td>
+                </tr>
+            </table>
+        </template>
+        
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'keepfool',
+                age: 288
+            },
+            components: {
+                'child-temp': {
+                    template: '#child-temp',
+                    props: ['myName', 'myAge']
+                }
+            }
+        });
+    </script>
+
+</html>
