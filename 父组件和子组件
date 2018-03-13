@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 使用 -->
+            <parent-tem></parent-tem>
+        </div>
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        //构造子组件
+        var childTem = Vue.extend({
+            template: '<p>this is child2</p>'
+        }); 
+
+        //构造父组件
+        var parentTem = Vue.extend({
+            //2.0版本需要多加一个div
+            template: '<div><p>this is parent2</p><child-tem></child-tem><div>',
+            components: {
+                'child-tem': childTem
+            }
+        }); 
+
+        //注册组件
+        Vue.component('parent-tem', parentTem);
+
+        //挂载元素
+        var vm = new Vue({
+            el: '#app'
+        });
+               
+    </script>
+
+</html>
