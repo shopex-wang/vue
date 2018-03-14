@@ -1,0 +1,55 @@
+
+        var childTemp = Vue.extend({
+            template: '<p></p>'
+        });
+
+        //错误
+        // Vue.component({
+        //     'child-temp': childTemp
+        // });
+        //正确
+        Vue.component('child-temp', childTemp);
+
+        var vm = new Vue({
+            el: '#app'
+        });
+
+
+
+
+
+        //错误
+        Vue.component('child-temp', function () {
+            template: '<p></p>'
+        });
+        //正确
+        Vue.component('child-temp', {
+            template: '<p></p>'
+        });
+
+        var vm = new Vue({
+            el: '#app'
+        });
+
+
+
+        // 错误
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                'child-temp': {
+                    template: '<p></p>'
+                } 
+            }
+        });
+        //正确
+        var childTemp = Vue.extend({
+            template: '<p></p>'
+        });
+
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                'child-temp': childTemp
+            }
+        });
