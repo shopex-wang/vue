@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="styles/demo.css" />
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 父组件数据 -->
+            <child-temp>
+                <h2>this is a slot</h2>
+            </child-temp>
+            <child-temp></child-temp>
+        </div>
+
+        <!-- 子组件数据 -->
+        <template id="child-temp">
+            <p>this is a component</p>
+            <slot>如果没有分发的内容，就显示slot中的内容</slot>
+            <p>say something</p>
+        </template>
+        
+    </body>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component('child-temp', {
+            template: '#child-temp'
+        })
+
+       var vm = new Vue({
+            el: '#app'
+       });
+    </script>
+
+</html>
